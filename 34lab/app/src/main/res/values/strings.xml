@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">34-lab</string>
+    <string name="forgot_your_password"><u>Forgot your password?</u></string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="password">Password..</string>
+    <string name="username">Username..</string>
+    <string name="logout">Logout</string>
+</resources>
