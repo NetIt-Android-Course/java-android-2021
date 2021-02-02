@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">БГ АПП</string>
+    <string name="forgot_your_password"><u>Забрави си паролата?</u></string>
+    <string name="login">Влез</string>
+    <string name="register">Регистрирай се</string>
+    <string name="password">Парола..</string>
+    <string name="username">Име..</string>
+    <string name="logout">Излез</string>
+</resources>
