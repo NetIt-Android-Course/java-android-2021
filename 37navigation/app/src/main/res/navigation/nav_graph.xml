@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dest_dashboard">
+
+    <fragment
+        android:id="@+id/dest_dashboard"
+        android:name="com.example.a37_navigation.DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboard_to_profile"
+            app:destination="@id/dest_profile" />
+        <action
+            android:id="@+id/action_dashboard_to_contacts"
+            app:destination="@id/dest_contacts" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_profile"
+        android:name="com.example.a37_navigation.ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_dashboard_to_placeholder4"
+            app:destination="@id/dest_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_contacts"
+        android:name="com.example.a37_navigation.ContactsFragment"
+        tools:layout="@layout/fragment_contacts" />
+    <fragment
+        android:id="@+id/dest_settings"
+        android:name="com.example.a37_navigation.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
