@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/todoFragment">
+
+    <fragment
+        android:id="@+id/todoFragment"
+        android:name="com.example.a35_recycler_view.fragments.TodoFragment"
+        android:label="fragment_todo"
+        tools:layout="@layout/fragment_todo" >
+        <action
+            android:id="@+id/action_todoFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_todoFragment_to_createTodoFragment"
+            app:destination="@id/createTodoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.a35_recycler_view.fragments.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_todoFragment"
+            app:destination="@id/todoFragment" />
+    </fragment>
+
+    <fragment
+        android:label="@string/create_new_to_do"
+        android:id="@+id/createTodoFragment"
+        android:name="com.example.a35_recycler_view.fragments.CreateToDoFragment"
+        tools:layout="@layout/fragment_create_to_do"
+        >
+    </fragment>
+
+</navigation>
