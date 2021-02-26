@@ -10,4 +10,5 @@
     <string name="low">Low</string>
     <string name="medium">Medium</string>
     <string name="high">High</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare a magna in porttitor. Vestibulum id gravida arcu. Suspendisse sed nisl laoreet, ultricies libero luctus, laoreet augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi eget tortor ut odio facilisis tempus. Suspendisse ornare rhoncus hendrerit.  Suspendisse potenti. Donec arcu felis, tincidunt at consectetur in, pellentesque volutpat velit. Curabitur interdum dolor neque, id tempor ipsum sodales vel. Fusce lobortis tortor nulla, ac sagittis lectus hendrerit vitae. Curabitur interdum, lacus ut interdum condimentum, elit turpis consectetur ante, ac fringilla sem neque et urna. In fermentum felis sit amet tortor bibendum convallis. Aliquam pulvinar eget nunc vehicula porta. Vivamus fermentum eu ex dapibus sodales. Quisque dui erat, eleifend vel erat vitae, porta ultrices mi.</string>
 </resources>

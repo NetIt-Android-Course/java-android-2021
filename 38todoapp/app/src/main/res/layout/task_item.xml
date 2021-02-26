@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_border"
+    android:background="@drawable/selector_list_item"
     android:gravity="center">
 
     <View
@@ -21,14 +21,19 @@
         android:textColor="@color/black"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="DONE"
-        android:textColor="@color/easy_green"
-        android:textStyle="bold"
-        android:visibility="invisible" />
+    <ImageView
+        android:id="@+id/imgDone"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?selectableItemBackground"
+        android:padding="@dimen/size_small"
+        android:src="@drawable/ic_uncheked" />
+
+    <ImageView
+        android:id="@+id/imgDelete"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?selectableItemBackground"
+        android:padding="@dimen/size_small"
+        android:src="@drawable/ic_baseline_delete_24" />
 </LinearLayout>

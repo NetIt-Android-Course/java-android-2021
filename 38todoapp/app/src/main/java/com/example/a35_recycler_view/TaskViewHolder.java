@@ -2,6 +2,7 @@ package com.example.a35_recycler_view;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,33 +24,17 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     public void bindData(Todo task) {
         txtTitle.setText(task.getTitle());
 
-        int difficultyColor = getDifficultyColor(task);
+        int difficultyColor = ConstantToResConverter.getDifficultyColor(task);
         Context context = itemView.getContext();
         viewDifficulty.setBackgroundColor(context.getColor(difficultyColor));
         changeDoneView(task);
     }
 
     public void changeDoneView(Todo task) {
-        if(task.isDone()) {
-            itemView.findViewById(R.id.txtDone).setVisibility(View.VISIBLE);
+        if (task.isDone()) {
+            ((ImageView) itemView.findViewById(R.id.imgDone)).setImageResource(R.drawable.ic_checked);
         } else {
-            itemView.findViewById(R.id.txtDone).setVisibility(View.INVISIBLE);
+            ((ImageView) itemView.findViewById(R.id.imgDone)).setImageResource(R.drawable.ic_uncheked);
         }
-    }
-
-    private int getDifficultyColor(Todo task) {
-        int difficultyColor = 0;
-        switch (task.getDifficulty()) {
-            case Todo.Difficulty.LOW:
-                difficultyColor = R.color.easy_green;
-                break;
-            case Todo.Difficulty.MEDIUM:
-                difficultyColor = R.color.medium_yellow;
-                break;
-            case Todo.Difficulty.HIGH:
-                difficultyColor = R.color.hard_red;
-                break;
-        }
-        return difficultyColor;
     }
 }

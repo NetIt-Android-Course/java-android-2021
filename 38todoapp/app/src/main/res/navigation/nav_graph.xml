@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_todoFragment_to_createTodoFragment"
             app:destination="@id/createTodoFragment" />
+        <action
+            android:id="@+id/action_todoFragment_to_todoDetailsFragment"
+            app:destination="@id/todoDetailsFragment" />
     </fragment>
 
     <fragment
@@ -34,6 +37,15 @@
         android:name="com.example.a35_recycler_view.fragments.CreateToDoFragment"
         tools:layout="@layout/fragment_create_to_do"
         >
+    </fragment>
+    <fragment
+        android:id="@+id/todoDetailsFragment"
+        android:name="com.example.a35_recycler_view.TodoDetailsFragment"
+        android:label="fragment_todo_details"
+        tools:layout="@layout/fragment_todo_details" >
+        <argument
+            android:name="TodoItem"
+            app:argType="com.example.a35_recycler_view.data.Todo" />
     </fragment>
 
 </navigation>
