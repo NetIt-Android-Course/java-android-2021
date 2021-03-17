@@ -28,6 +28,14 @@ public class ApiWrapper {
                 .baseUrl("https://dog.ceo/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+
+        Retrofit retrofit2 = new Retrofit.Builder()
+                .baseUrl("https://cat.ceo/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
         service = retrofit.create(DogApiService.class);
     }
 

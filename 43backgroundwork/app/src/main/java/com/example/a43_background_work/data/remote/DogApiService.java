@@ -5,6 +5,7 @@ import com.example.a43_background_work.data.remote.models.ImagesUrlsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface DogApiService {

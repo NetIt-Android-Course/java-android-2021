@@ -18,7 +18,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.a43_background_work.DogTinderApplication;
 import com.example.a43_background_work.R;
+import com.example.a43_background_work.ThreadUtils;
+import com.example.a43_background_work.data.local.AppDatabase;
+import com.example.a43_background_work.data.local.AsyncDatabase;
+import com.example.a43_background_work.data.local.entities.UserEntity;
 import com.example.a43_background_work.data.remote.ApiWrapper;
 import com.example.a43_background_work.ui.adapters.ImageUrlsAdapter;
 
@@ -52,7 +57,22 @@ public class RegisterFragment extends Fragment {
 
     private void onRegisterClicked() {
         List<String> selectedUrls = ((ImageUrlsAdapter) recImages.getAdapter()).getSelectedUrls();
-        Toast.makeText(getContext(), selectedUrls.toString(), Toast.LENGTH_SHORT).show();
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.name = edtName.getText().toString();
+        userEntity.age = Integer.parseInt(edtAge.getText().toString());
+        userEntity.breed = breeds.get(spnBreed.getSelectedItemPosition());
+
+        AsyncDatabase.getInstance(getContext()).getUserByNameAndAge(userEntity.name, userEntity.age, new AsyncDatabase.DataReceivedListener<UserEntity>() {
+            @Override
+            public void onDataReceived(UserEntity data) {
+                if(data == null) {
+                    AsyncDatabase.getInstance(getContext()).insert(userEntity);
+                } else {
+                    Toast.makeText(getContext(), "This user already exists. Login.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void initSpinnerListener() {
