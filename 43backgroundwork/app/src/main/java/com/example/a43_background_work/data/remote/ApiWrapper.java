@@ -1,6 +1,7 @@
 package com.example.a43_background_work.data.remote;
 
 import com.example.a43_background_work.JsonUtils;
+import com.example.a43_background_work.data.local.AsyncDatabase;
 import com.example.a43_background_work.data.remote.models.BreedsResponse;
 import com.example.a43_background_work.data.remote.models.ImagesUrlsResponse;
 
@@ -18,12 +19,15 @@ public class ApiWrapper {
     private static ApiWrapper instance;
     private final DogApiService service;
 
+    public static void init(AsyncDatabase asyncDatabase) {
+        if(instance == null) instance = new ApiWrapper(asyncDatabase);
+    }
+
     public static ApiWrapper getInstance() {
-        if(instance == null) instance = new ApiWrapper();
         return instance;
     }
 
-    private ApiWrapper() {
+    private ApiWrapper(AsyncDatabase asyncDatabase) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://dog.ceo/api/")
                 .addConverterFactory(GsonConverterFactory.create())

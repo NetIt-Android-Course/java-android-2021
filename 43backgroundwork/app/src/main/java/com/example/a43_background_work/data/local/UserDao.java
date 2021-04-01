@@ -1,5 +1,6 @@
 package com.example.a43_background_work.data.local;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -12,7 +13,7 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Query("SELECT * FROM users")
-    List<UserEntity> getAll();
+    LiveData<List<UserEntity>> getAll();
 
     @Query("SELECT * FROM users WHERE name LIKE :userName AND " +
             "age LIKE :userAge LIMIT 1")
