@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.a43_background_work.R;
+import com.example.a43_background_work.data.remote.authentication.AuthenticationManager;
 
 public class LoginFragment extends Fragment {
 
@@ -25,7 +26,9 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        if(AuthenticationManager.getInstance().hasLoggedUser()) {
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
+        }
         view.findViewById(R.id.txtRegister).setOnClickListener(view1 -> onRegisterClicked(view));
     }
 

@@ -1,15 +1,13 @@
 package com.example.a43_background_work.controllers;
 
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.example.a43_background_work.data.local.AsyncDatabase;
 import com.example.a43_background_work.data.local.entities.UserEntity;
-import com.example.a43_background_work.data.remote.ApiWrapper;
-import com.example.a43_background_work.ui.adapters.ImageUrlsAdapter;
+import com.example.a43_background_work.data.remote.authentication.AuthenticationManager;
+import com.example.a43_background_work.data.remote.dog_images.ApiWrapper;
+import com.example.a43_background_work.ui.models.RegisterViewModel;
 
 import java.util.List;
 
@@ -38,22 +36,16 @@ public class RegisterController {
         });
     }
 
-    public void onRegisterClicked(List<String> selectedImages, String userName, int userAge, String userBreed) {
-        List<String> selectedUrls = selectedImages;
-        UserEntity userEntity = new UserEntity();
-        userEntity.name = userName;
-        userEntity.age = userAge;
-        userEntity.breed = userBreed;
-
-        AsyncDatabase.getInstance().getUserByNameAndAge(userEntity.name, userEntity.age, new AsyncDatabase.DataReceivedListener<UserEntity>() {
+    public void onRegisterClicked(RegisterViewModel viewModel) {
+        AuthenticationManager.getInstance().register(viewModel.email, viewModel.password, new AuthenticationManager.AuthListener() {
             @Override
-            public void onDataReceived(UserEntity data) {
-                if(data == null) {
-                    AsyncDatabase.getInstance().insert(userEntity);
-                } else {
-//                    callback.showError("This user already exists. Login.");
-                    showErrorLiveData.postValue("This user already exists. Login.");
-                }
+            public void onSuccess() {
+                callback.navigateToLoginScreen();
+            }
+
+            @Override
+            public void onFailure(String error) {
+                showErrorLiveData.postValue(error);
             }
         });
     }
@@ -88,5 +80,6 @@ public class RegisterController {
         void showBreeds(List<String> data);
 //        void showError(String error);
         void showMessage(String message);
+        void navigateToLoginScreen();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.a43_background_work.data.remote.models;
+package com.example.a43_background_work.data.remote.dog_images.models;
 
 public class ImagesUrlsResponse {
 

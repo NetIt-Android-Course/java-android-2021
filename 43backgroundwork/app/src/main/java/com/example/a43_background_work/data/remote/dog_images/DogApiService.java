@@ -1,11 +1,10 @@
-package com.example.a43_background_work.data.remote;
+package com.example.a43_background_work.data.remote.dog_images;
 
-import com.example.a43_background_work.data.remote.models.BreedsResponse;
-import com.example.a43_background_work.data.remote.models.ImagesUrlsResponse;
+import com.example.a43_background_work.data.remote.dog_images.models.BreedsResponse;
+import com.example.a43_background_work.data.remote.dog_images.models.ImagesUrlsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface DogApiService {

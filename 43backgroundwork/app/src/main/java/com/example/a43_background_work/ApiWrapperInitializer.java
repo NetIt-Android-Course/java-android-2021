@@ -6,10 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.startup.Initializer;
 
 import com.example.a43_background_work.data.local.AsyncDatabase;
-import com.example.a43_background_work.data.remote.ApiWrapper;
+import com.example.a43_background_work.data.remote.dog_images.ApiWrapper;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class ApiWrapperInitializer implements Initializer<ApiWrapper> {

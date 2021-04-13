@@ -5,38 +5,22 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.a43_background_work.DogTinderApplication;
 import com.example.a43_background_work.R;
-import com.example.a43_background_work.ThreadUtils;
 import com.example.a43_background_work.controllers.RegisterController;
-import com.example.a43_background_work.data.local.AppDatabase;
-import com.example.a43_background_work.data.local.AsyncDatabase;
-import com.example.a43_background_work.data.local.entities.UserEntity;
-import com.example.a43_background_work.data.remote.ApiWrapper;
-import com.example.a43_background_work.data.remote.models.Message;
 import com.example.a43_background_work.databinding.FragmentRegisterBinding;
 import com.example.a43_background_work.ui.adapters.ImageUrlsAdapter;
 import com.example.a43_background_work.ui.models.RegisterViewModel;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class RegisterFragment extends Fragment {
@@ -58,8 +42,6 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         model = new RegisterViewModel();
-        model.name = "Ivan";
-        model.age = "12";
         binding.setRegmodel(model);
 
         controller = new RegisterController(callback);
@@ -72,12 +54,7 @@ public class RegisterFragment extends Fragment {
     }
 
     private void initRegisterListener() {
-        binding.btnRegister.setOnClickListener(view1 -> controller.onRegisterClicked(
-                ((ImageUrlsAdapter) binding.recImages.getAdapter()).getSelectedUrls(),
-                model.name,
-                Integer.parseInt(binding.edtAge.getText().toString()),
-                breeds.get(binding.spnBreed.getSelectedItemPosition())
-        ));
+        binding.btnRegister.setOnClickListener(view1 -> controller.onRegisterClicked(model));
     }
 
     private void initSpinnerListener() {
@@ -120,6 +97,11 @@ public class RegisterFragment extends Fragment {
         @Override
         public void showMessage(String message) {
             Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void navigateToLoginScreen() {
+            getActivity().onBackPressed();
         }
     };
 }

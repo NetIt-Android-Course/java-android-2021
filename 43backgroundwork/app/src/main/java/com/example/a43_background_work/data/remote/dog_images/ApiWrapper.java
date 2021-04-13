@@ -1,11 +1,10 @@
-package com.example.a43_background_work.data.remote;
+package com.example.a43_background_work.data.remote.dog_images;
 
 import com.example.a43_background_work.JsonUtils;
 import com.example.a43_background_work.data.local.AsyncDatabase;
-import com.example.a43_background_work.data.remote.models.BreedsResponse;
-import com.example.a43_background_work.data.remote.models.ImagesUrlsResponse;
+import com.example.a43_background_work.data.remote.dog_images.models.BreedsResponse;
+import com.example.a43_background_work.data.remote.dog_images.models.ImagesUrlsResponse;
 
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
