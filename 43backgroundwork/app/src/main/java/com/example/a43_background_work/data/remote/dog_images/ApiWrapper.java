@@ -15,31 +15,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiWrapper {
 
-    private static ApiWrapper instance;
     private final DogApiService service;
 
-    public static void init(AsyncDatabase asyncDatabase) {
-        if(instance == null) instance = new ApiWrapper(asyncDatabase);
-    }
-
-    public static ApiWrapper getInstance() {
-        return instance;
-    }
-
-    private ApiWrapper(AsyncDatabase asyncDatabase) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://dog.ceo/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
-        Retrofit retrofit2 = new Retrofit.Builder()
-                .baseUrl("https://cat.ceo/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
-        service = retrofit.create(DogApiService.class);
+    public ApiWrapper(AsyncDatabase asyncDatabase, DogApiService service) {
+        this. service = service;
     }
 
     public void getAllBreeds(OnApiResultListener<List<String>> callback) {

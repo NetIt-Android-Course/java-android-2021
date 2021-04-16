@@ -21,15 +21,15 @@
             </intent-filter>
         </activity>
 
-        <provider
-            android:name="androidx.startup.InitializationProvider"
-            android:authorities="${applicationId}.androidx-startup"
-            android:exported="false"
-            tools:node="merge">
-            <!-- This entry makes WorkManagerInitializer discoverable. -->
-            <meta-data  android:name="com.example.a43_background_work.ApiWrapperInitializer"
-                android:value="androidx.startup" />
-        </provider>
+<!--        <provider-->
+<!--            android:name="androidx.startup.InitializationProvider"-->
+<!--            android:authorities="${applicationId}.androidx-startup"-->
+<!--            android:exported="false"-->
+<!--            tools:node="merge">-->
+<!--            &lt;!&ndash; This entry makes WorkManagerInitializer discoverable. &ndash;&gt;-->
+<!--            <meta-data  android:name="com.example.a43_background_work.ApiWrapperInitializer"-->
+<!--                android:value="androidx.startup" />-->
+<!--        </provider>-->
 
     </application>
 

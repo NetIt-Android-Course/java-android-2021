@@ -36,7 +36,7 @@ public class MainFragment extends Fragment {
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AuthenticationManager.getInstance().logout();
+//                AuthenticationManager.getInstance().logout();
                 getActivity().onBackPressed();
             }
         });

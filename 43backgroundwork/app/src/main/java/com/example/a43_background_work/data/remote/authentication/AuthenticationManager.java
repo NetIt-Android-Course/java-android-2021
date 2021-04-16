@@ -11,14 +11,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class AuthenticationManager {
 
     private final FirebaseAuth auth;
-    private static AuthenticationManager instance;
 
-    public static AuthenticationManager getInstance() {
-        if(instance == null) instance = new AuthenticationManager();
-        return instance;
-    }
-
-    private AuthenticationManager() {
+    public AuthenticationManager() {
         auth = FirebaseAuth.getInstance();
     }
 

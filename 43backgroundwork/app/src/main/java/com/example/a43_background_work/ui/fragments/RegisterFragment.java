@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.example.a43_background_work.DependencyInjector;
+import com.example.a43_background_work.DogTinderApplication;
 import com.example.a43_background_work.R;
 import com.example.a43_background_work.controllers.RegisterController;
 import com.example.a43_background_work.databinding.FragmentRegisterBinding;
@@ -23,10 +25,13 @@ import com.example.a43_background_work.ui.models.RegisterViewModel;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class RegisterFragment extends Fragment {
 
     private List<String> breeds;
-    private RegisterController controller;
+    @Inject
+    RegisterController controller;
     private FragmentRegisterBinding binding;
     private RegisterViewModel model;
 
@@ -34,6 +39,7 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 //        binding = FragmentRegisterBinding.inflate(inflater, container, false);
+        ((DogTinderApplication) getActivity().getApplication()).getAppComponent().inject(this);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false);
         return this.binding.getRoot();
     }
@@ -43,8 +49,7 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         model = new RegisterViewModel();
         binding.setRegmodel(model);
-
-        controller = new RegisterController(callback);
+        controller.setCallback(callback);
         controller.showErrorLiveData.observe(getViewLifecycleOwner(),
                 s -> Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show());
 

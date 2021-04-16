@@ -16,21 +16,7 @@ import java.util.List;
 
 public class AsyncDatabase {
 
-    private static AsyncDatabase instance;
     private final UserDao userDao;
-
-    public static void init(Context context) {
-        if(instance == null) {
-            instance = new AsyncDatabase(context);
-        }
-    }
-
-    public static AsyncDatabase getInstance() {
-        if(instance == null) {
-            throw new NullPointerException("AsyncDatabase is not initiliazized.");
-        }
-        return instance;
-    }
 
     public AsyncDatabase(Context context) {
         userDao = AppDatabase.getInstance(context).userDao();
