@@ -4,6 +4,7 @@ import com.example.a43_background_work.JsonUtils;
 import com.example.a43_background_work.data.local.AsyncDatabase;
 import com.example.a43_background_work.data.remote.dog_images.models.BreedsResponse;
 import com.example.a43_background_work.data.remote.dog_images.models.ImagesUrlsResponse;
+import com.example.a43_background_work.data.repositories.DogImageRepository;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class ApiWrapper {
         this. service = service;
     }
 
-    public void getAllBreeds(OnApiResultListener<List<String>> callback) {
+    public void getAllBreeds(DogImageRepository.OnApiResultListener<List<String>> callback) {
         service.getAllBreeds().enqueue(new Callback<BreedsResponse>() {
             @Override
             public void onResponse(Call<BreedsResponse> call, Response<BreedsResponse> response) {
@@ -40,7 +41,7 @@ public class ApiWrapper {
         });
     }
 
-    public void getImagesUrlByBreed(String breed, OnApiResultListener<String[]> callback) {
+    public void getImagesUrlByBreed(String breed, DogImageRepository.OnApiResultListener<String[]> callback) {
         String[] breedArr = breed.split(" ");
         if(breedArr.length == 1) {
             getImagesUrlByMasterBreed(breed, callback);
@@ -49,7 +50,7 @@ public class ApiWrapper {
         }
     }
 
-    private void getImagesUrlBySubbreed(String masterBreed, String subBreed, OnApiResultListener<String[]> callback) {
+    private void getImagesUrlBySubbreed(String masterBreed, String subBreed, DogImageRepository.OnApiResultListener<String[]> callback) {
         service.getImagesUrlsBySubBreed(masterBreed, subBreed).enqueue(new Callback<ImagesUrlsResponse>() {
             @Override
             public void onResponse(Call<ImagesUrlsResponse> call, Response<ImagesUrlsResponse> response) {
@@ -68,7 +69,7 @@ public class ApiWrapper {
         });
     }
 
-    private void getImagesUrlByMasterBreed(String breed, OnApiResultListener<String[]> callback) {
+    private void getImagesUrlByMasterBreed(String breed, DogImageRepository.OnApiResultListener<String[]> callback) {
         service.getImagesUrlsByBreed(breed).enqueue(new Callback<ImagesUrlsResponse>() {
             @Override
             public void onResponse(Call<ImagesUrlsResponse> call, Response<ImagesUrlsResponse> response) {
@@ -85,10 +86,5 @@ public class ApiWrapper {
                 callback.onFailure();
             }
         });
-    }
-
-    public interface OnApiResultListener<T> {
-        void onSuccess(T data);
-        void onFailure();
     }
 }

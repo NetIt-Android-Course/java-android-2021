@@ -28,7 +28,7 @@ public class DataModule {
 
     @Singleton
     @Provides
-    Retrofit provideRetrofit() {
+    public Retrofit provideRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl("https://dog.ceo/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -38,7 +38,7 @@ public class DataModule {
 
     @Singleton
     @Provides
-    DogApiService providesDogService(Retrofit retrofit) {
+    public DogApiService providesDogService(Retrofit retrofit) {
         return retrofit.create(DogApiService.class);
     }
 }

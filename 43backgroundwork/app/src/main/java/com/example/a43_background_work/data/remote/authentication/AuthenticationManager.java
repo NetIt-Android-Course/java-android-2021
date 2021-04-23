@@ -2,13 +2,14 @@ package com.example.a43_background_work.data.remote.authentication;
 
 import androidx.annotation.NonNull;
 
+import com.example.a43_background_work.data.repositories.AuthRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AuthenticationManager {
+public class AuthenticationManager implements AuthRepository {
 
     private final FirebaseAuth auth;
 
@@ -28,7 +29,8 @@ public class AuthenticationManager {
         return auth.getUid();
     }
 
-    public void register(String email, String password, AuthListener callback) {
+    @Override
+    public void register(String email, String password, AuthRepository.AuthListener callback) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -43,7 +45,7 @@ public class AuthenticationManager {
         });
     }
 
-    public void login(String email, String password, AuthListener callback) {
+    public void login(String email, String password, AuthRepository.AuthListener callback) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -56,10 +58,5 @@ public class AuthenticationManager {
                 callback.onFailure(e.getMessage());
             }
         });
-    }
-
-    public interface AuthListener {
-        void onSuccess();
-        void onFailure(String error);
     }
 }

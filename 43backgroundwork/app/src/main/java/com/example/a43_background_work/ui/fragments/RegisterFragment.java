@@ -15,11 +15,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.example.a43_background_work.DependencyInjector;
 import com.example.a43_background_work.DogTinderApplication;
 import com.example.a43_background_work.R;
-import com.example.a43_background_work.controllers.RegisterController;
+import com.example.a43_background_work.presenters.contracts.register.RegisterViewListener;
 import com.example.a43_background_work.databinding.FragmentRegisterBinding;
+import com.example.a43_background_work.presenters.contracts.register.RegisterPresenterListener;
 import com.example.a43_background_work.ui.adapters.ImageUrlsAdapter;
 import com.example.a43_background_work.ui.models.RegisterViewModel;
 
@@ -27,18 +27,17 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends Fragment implements RegisterViewListener {
 
     private List<String> breeds;
     @Inject
-    RegisterController controller;
+    RegisterPresenterListener presenter;
     private FragmentRegisterBinding binding;
     private RegisterViewModel model;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        binding = FragmentRegisterBinding.inflate(inflater, container, false);
         ((DogTinderApplication) getActivity().getApplication()).getAppComponent().inject(this);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false);
         return this.binding.getRoot();
@@ -49,17 +48,14 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         model = new RegisterViewModel();
         binding.setRegmodel(model);
-        controller.setCallback(callback);
-        controller.showErrorLiveData.observe(getViewLifecycleOwner(),
-                s -> Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show());
-
+        presenter.setCallback(this);
         initSpinnerListener();
         initRegisterListener();
-        controller.onUiLoaded();
+        presenter.onUiLoaded();
     }
 
     private void initRegisterListener() {
-        binding.btnRegister.setOnClickListener(view1 -> controller.onRegisterClicked(model));
+        binding.btnRegister.setOnClickListener(view1 -> presenter.onRegisterClicked(model));
     }
 
     private void initSpinnerListener() {
@@ -67,7 +63,7 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedBreed = breeds.get(i);
-                controller.onBreedSelected(selectedBreed);
+                presenter.onBreedSelected(selectedBreed);
             }
 
             @Override
@@ -82,31 +78,29 @@ public class RegisterFragment extends Fragment {
         binding.recImages.setAdapter(new ImageUrlsAdapter(data));
     }
 
-    private RegisterController.RegisterControllerCallback callback = new RegisterController.RegisterControllerCallback() {
-        @Override
-        public void showImageLinks(String[] data) {
-            setRecViewData(data);
-        }
+    @Override
+    public void showImageLinks(String[] data) {
+        setRecViewData(data);
+    }
 
-        @Override
-        public void showBreeds(List<String> data) {
-            breeds = data;
-            binding.spnBreed.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, breeds));
-        }
+    @Override
+    public void showBreeds(List<String> data) {
+        breeds = data;
+        binding.spnBreed.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, breeds));
+    }
 
-//        @Override
-//        public void showError(String error) {
-//            Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
-//        }
+    @Override
+    public void showError(String error) {
+        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+    }
 
-        @Override
-        public void showMessage(String message) {
-            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
 
-        @Override
-        public void navigateToLoginScreen() {
-            getActivity().onBackPressed();
-        }
-    };
+    @Override
+    public void navigateToLoginScreen() {
+        getActivity().onBackPressed();
+    }
 }

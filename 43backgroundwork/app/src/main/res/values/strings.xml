@@ -5,4 +5,8 @@
     <string name="no_account_register">You don\'t have an account? Register NOW!</string>
     <string name="register">Register</string>
     <string name="select_breed_and_images">Select breed and images</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>

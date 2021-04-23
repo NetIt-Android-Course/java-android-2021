@@ -11,10 +11,11 @@ import androidx.room.Room;
 
 import com.example.a43_background_work.ThreadUtils;
 import com.example.a43_background_work.data.local.entities.UserEntity;
+import com.example.a43_background_work.data.repositories.UserRepository;
 
 import java.util.List;
 
-public class AsyncDatabase {
+public class AsyncDatabase implements UserRepository {
 
     private final UserDao userDao;
 
@@ -33,6 +34,7 @@ public class AsyncDatabase {
         });
     }
 
+    @Override
     public LiveData<List<UserEntity>> getAllUsers() {
         return userDao.getAll();
     }
