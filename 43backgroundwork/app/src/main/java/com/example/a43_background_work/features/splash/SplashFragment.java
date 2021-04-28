@@ -1,4 +1,4 @@
-package com.example.a43_background_work.ui.fragments;
+package com.example.a43_background_work.features.splash;
 
 import android.os.Bundle;
 

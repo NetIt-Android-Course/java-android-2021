@@ -1,4 +1,4 @@
-package com.example.a43_background_work.ui;
+package com.example.a43_background_work.features.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,8 +1,7 @@
 package com.example.a43_background_work.di;
 
-import com.example.a43_background_work.ui.MainActivity;
-import com.example.a43_background_work.ui.fragments.MainFragment;
-import com.example.a43_background_work.ui.fragments.RegisterFragment;
+import com.example.a43_background_work.features.main.MainActivity;
+import com.example.a43_background_work.features.register.RegisterFragment;
 
 import javax.inject.Singleton;
 

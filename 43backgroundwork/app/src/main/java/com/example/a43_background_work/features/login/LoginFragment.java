@@ -1,4 +1,4 @@
-package com.example.a43_background_work.ui.fragments;
+package com.example.a43_background_work.features.login;
 
 import android.os.Bundle;
 
@@ -13,32 +13,26 @@ import android.view.ViewGroup;
 
 import com.example.a43_background_work.R;
 import com.example.a43_background_work.data.remote.authentication.AuthenticationManager;
-import com.example.a43_background_work.databinding.FragmentMainBinding;
 
-
-public class MainFragment extends Fragment {
-
-
-    private FragmentMainBinding binding;
+public class LoginFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentMainBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+//        if(AuthenticationManager.getInstance().hasLoggedUser()) {
+//            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
+//        }
+        view.findViewById(R.id.txtRegister).setOnClickListener(view1 -> onRegisterClicked(view));
+    }
 
-        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                AuthenticationManager.getInstance().logout();
-                getActivity().onBackPressed();
-            }
-        });
+    private void onRegisterClicked(View view) {
+        Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment);
     }
 }

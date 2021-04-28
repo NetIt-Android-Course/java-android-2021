@@ -1,4 +1,4 @@
-package com.example.a43_background_work.presenters.contracts.register;
+package com.example.a43_background_work.depricated;
 
 import java.util.List;
 

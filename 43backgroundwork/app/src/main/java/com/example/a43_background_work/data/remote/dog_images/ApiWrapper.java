@@ -1,6 +1,6 @@
 package com.example.a43_background_work.data.remote.dog_images;
 
-import com.example.a43_background_work.JsonUtils;
+import com.example.a43_background_work.utils.JsonUtils;
 import com.example.a43_background_work.data.local.AsyncDatabase;
 import com.example.a43_background_work.data.remote.dog_images.models.BreedsResponse;
 import com.example.a43_background_work.data.remote.dog_images.models.ImagesUrlsResponse;
@@ -11,10 +11,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiWrapper {
+public class ApiWrapper implements DogImageRepository {
 
     private final DogApiService service;
 

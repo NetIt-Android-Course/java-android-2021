@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:name=".DogTinderApplication"
         android:theme="@style/Theme.43backgroundwork">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".features.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

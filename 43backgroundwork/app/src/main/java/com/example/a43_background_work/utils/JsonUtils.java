@@ -1,4 +1,4 @@
-package com.example.a43_background_work;
+package com.example.a43_background_work.utils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

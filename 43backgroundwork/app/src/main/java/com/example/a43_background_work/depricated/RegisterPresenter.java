@@ -1,14 +1,10 @@
-package com.example.a43_background_work.presenters;
+package com.example.a43_background_work.depricated;
 
 import com.example.a43_background_work.data.repositories.AuthRepository;
 import com.example.a43_background_work.data.repositories.DogImageRepository;
 import com.example.a43_background_work.data.repositories.UserRepository;
-import com.example.a43_background_work.presenters.contracts.register.RegisterPresenterListener;
-import com.example.a43_background_work.presenters.contracts.register.RegisterViewListener;
-import com.example.a43_background_work.data.local.AsyncDatabase;
 import com.example.a43_background_work.data.remote.authentication.AuthenticationManager;
-import com.example.a43_background_work.data.remote.dog_images.ApiWrapper;
-import com.example.a43_background_work.ui.models.RegisterViewModel;
+import com.example.a43_background_work.features.register.RegisterUiModel;
 
 import java.util.List;
 
@@ -51,7 +47,7 @@ public class RegisterPresenter implements RegisterPresenterListener {
     }
 
     @Override
-    public void onRegisterClicked(RegisterViewModel viewModel) {
+    public void onRegisterClicked(RegisterUiModel viewModel) {
         authRepository.register(viewModel.email, viewModel.password, new AuthenticationManager.AuthListener() {
             @Override
             public void onSuccess() {

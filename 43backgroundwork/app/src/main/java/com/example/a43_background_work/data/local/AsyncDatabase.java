@@ -1,15 +1,10 @@
 package com.example.a43_background_work.data.local;
 
 import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
 
-import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
-import androidx.room.Room;
 
-import com.example.a43_background_work.ThreadUtils;
+import com.example.a43_background_work.utils.ThreadUtils;
 import com.example.a43_background_work.data.local.entities.UserEntity;
 import com.example.a43_background_work.data.repositories.UserRepository;
 

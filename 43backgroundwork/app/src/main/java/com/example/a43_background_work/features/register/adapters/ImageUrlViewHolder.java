@@ -1,4 +1,4 @@
-package com.example.a43_background_work.ui.adapters;
+package com.example.a43_background_work.features.register.adapters;
 
 import android.view.View;
 
