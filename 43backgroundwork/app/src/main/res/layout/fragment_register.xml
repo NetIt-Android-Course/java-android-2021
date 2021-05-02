@@ -7,13 +7,13 @@
 
         <variable
             name="regmodel"
-            type="com.example.a43_background_work.ui.models.RegisterViewModel" />
+            type="com.teo.a43_background_work.ui.models.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.RegisterFragment">
+        tools:context="com.teo.a43_background_work.ui.fragments.RegisterFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
