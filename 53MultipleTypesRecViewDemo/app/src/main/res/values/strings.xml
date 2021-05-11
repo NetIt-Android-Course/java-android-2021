@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">53-MultipleTypesRecViewDemo</string>
+    <string name="x_pages_read_from_y">%d pages read from %d</string>
+    <string name="last_page_read_x">Last page read: %d</string>
+</resources>
