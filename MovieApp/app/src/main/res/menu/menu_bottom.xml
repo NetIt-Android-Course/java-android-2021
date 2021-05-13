@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:visible="true"
+        android:title="@string/home"
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+    <item
+        android:visible="true"
+        android:title="@string/crew"
+        android:id="@+id/action_crew"
+        android:icon="@drawable/ic_crew"
+        app:showAsAction="always"/>
+
+    <item
+        android:title="@string/review"
+        android:id="@+id/action_review"
+        android:icon="@drawable/ic_review"
+        app:showAsAction="always"/>
+
+    <item
+        android:title="@string/publish"
+        android:id="@+id/action_publish"
+        android:icon="@drawable/ic_published"
+        app:showAsAction="always"/>
+</menu>
